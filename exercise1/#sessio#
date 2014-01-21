@@ -1,0 +1,28 @@
+irb(main):005:0> b1 = Brewery.create name:"BrewDog", year:2007
+   (0.1ms)  begin transaction
+     SQL (2.2ms)  INSERT INTO "breweries" ("created_at", "name",
+"updated_at", "year") VALUES (?, ?, ?, ?)  [["created_at", Tue, 21 Jan
+2014 12:48:05 UTC +00:00], ["name", "BrewDog"], ["updated_at", Tue, 21
+Jan 2014 12:48:05 UTC +00:00], ["year", 2007]]
+   (113.0ms)  commit transaction
+   => #<Brewery id: 5, name: "BrewDog", year: 2007, created_at:
+"2014-01-21 12:48:05", updated_at: "2014-01-21 12:48:05">
+irb(main):006:0> b1.beers.create name:"Punk IPA", style:"IPA"
+   (0.0ms)  begin transaction
+     SQL (0.3ms)  INSERT INTO "beers" ("brewery_id", "created_at",
+"name", "style", "updated_at") VALUES (?, ?, ?, ?, ?)  [["brewery_id",
+5], ["created_at", Tue, 21 Jan 2014 12:48:30 UTC +00:00], ["name",
+"Punk IPA"], ["style", "IPA"], ["updated_at", Tue, 21 Jan 2014
+12:48:30 UTC +00:00]]
+   (118.1ms)  commit transaction
+   => #<Beer id: 14, name: "Punk IPA", style: "IPA", brewery_id: 5,
+created_at: "2014-01-21 12:48:30", updated_at: "2014-01-21 12:48:30">
+irb(main):007:0> b1.beers.create name:"Nanny Stale", style:"lowalcohol"
+   (0.1ms)  begin transaction
+     SQL (0.4ms)  INSERT INTO "beers" ("brewery_id", "created_at",
+"name", "style", "updated_at") VALUES (?, ?, ?, ?, ?)  [["brewery_id",
+5], ["created_at", Tue, 21 Jan 2014 12:48:54 UTC +00:00], ["name",
+"Nanny Stale"], ["style", "lowalcohol"], ["updated_at", Tue, 21 Jan
+2014 12:48:54 UTC +00:00]]
+   (124.5ms)  commit transaction
+   => #<Beer id: 15, name: "Nanny

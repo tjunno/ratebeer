@@ -18,10 +18,21 @@
   <% @user.ratings.each do |rating| %>
   <li>
     <%= rating %>
-    <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if @user == current_user %>
+        <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
+  <% end %>
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<b>member of</b>
+<ul>
+  <% @user.memberships.each do |ms| %>
+      <li> <%=link_to ms.beer_club.name, ms.beer_club %></li>
+  <% end %>
+</ul>
+<br/>
+
+<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_user_path(@user) %>|
 <%= link_to 'Back', users_path %>

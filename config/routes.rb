@@ -1,4 +1,8 @@
 Ratebeer::Application.routes.draw do
+  resources :memberships
+
+  resources :beer_clubs
+
   resources :users
 
   resources :beers
@@ -6,7 +10,7 @@ Ratebeer::Application.routes.draw do
   resources :breweries
 
   resources :sessions, only: [:new, :create]
-
+  
   root 'breweries#index'
 
   get 'signup', to: 'users#new'

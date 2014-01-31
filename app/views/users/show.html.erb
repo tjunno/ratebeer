@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <% if @user.ratings.count > 0 %>
+    has made <%= pluralize @user.ratings.count, 'rating' %>.
+    Average of ratings is <%= @user.average_rating %>
+  <% else %>
+  hasn't rated anything.
+<% end %>
+</p>
+
+<ul>
+  <% @user.ratings.each do |rating| %>
+  <li>
+    <%= rating %>
+    <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
